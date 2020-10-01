@@ -19,7 +19,9 @@ const generateTmp = () => {
         const isDir = stats.isDirectory();
         if (isFile) {
           const newFiledir = filedir.split("/src");
-          addressMap.push("." + newFiledir[1].replace('.tsx', ''));
+          if (newFiledir[1].indexOf('index') > -1) {
+            addressMap.push("." + newFiledir[1].replace('.tsx', ''));
+          }
         }
         if (isDir) {
           loopFile(filedir);
